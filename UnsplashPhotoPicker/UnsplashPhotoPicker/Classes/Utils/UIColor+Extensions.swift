@@ -6,9 +6,15 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
+#if os(macOS)
+import AppKit
+public typealias NativeColor = NSColor
+#else
 import UIKit
+public typealias NativeColor = UIColor
+#endif
 
-extension UIColor {
+extension NativeColor {
     var redComponent: CGFloat { return cgColor.components?[0] ?? 0 }
     var greenComponent: CGFloat { return cgColor.components?[1] ?? 0 }
     var blueComponent: CGFloat { return cgColor.components?[2] ?? 0 }
@@ -20,7 +26,7 @@ extension UIColor {
     }
 }
 
-extension UIColor {
+extension NativeColor {
     convenience init(hexString: String) {
         var chars = Array(hexString.hasPrefix("#") ? String(hexString.dropFirst()) : hexString)
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 1

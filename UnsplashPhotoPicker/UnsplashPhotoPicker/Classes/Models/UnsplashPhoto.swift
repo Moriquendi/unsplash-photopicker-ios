@@ -6,7 +6,8 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import SwiftUI
 
 /// A struct representing a photo from the Unsplash API.
 public struct UnsplashPhoto: Codable {
@@ -29,7 +30,7 @@ public struct UnsplashPhoto: Codable {
     public let identifier: String
     public let height: Int
     public let width: Int
-    public let color: UIColor?
+    public let color: NativeColor?
     public let exif: UnsplashPhotoExif?
     public let user: UnsplashUser
     public let urls: [URLKind: URL]
@@ -59,7 +60,7 @@ public struct UnsplashPhoto: Codable {
         width = try container.decode(Int.self, forKey: .width)
 
         if let hexString = try? container.decode(String.self, forKey: .color) {
-            color = UIColor(hexString: hexString)
+            color = NativeColor(hexString: hexString)
         } else {
             color = nil
         }
@@ -88,4 +89,8 @@ public struct UnsplashPhoto: Codable {
         try? container.encode(viewsCount, forKey: .viewsCount)
     }
 
+}
+
+extension UnsplashPhoto: Identifiable {
+    public var id: String { identifier }
 }

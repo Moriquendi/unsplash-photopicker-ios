@@ -6,12 +6,12 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension KeyedDecodingContainer {
-    func decode(_ type: UIColor.Type, forKey key: Key) throws -> UIColor {
+    func decode(_ type: NativeColor.Type, forKey key: Key) throws -> NativeColor {
         let hexColor = try self.decode(String.self, forKey: key)
-        return UIColor(hexString: hexColor)
+        return NativeColor(hexString: hexColor)
     }
 
     func decode(_ type: [UnsplashPhoto.URLKind: URL].Type, forKey key: Key) throws -> [UnsplashPhoto.URLKind: URL] {

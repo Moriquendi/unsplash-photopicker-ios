@@ -6,7 +6,7 @@
 //  Copyright © 2021 Unsplash. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension Bundle {
     static var local: Bundle {

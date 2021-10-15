@@ -6,7 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 enum PhotosDataSourceFactory: PagedDataSourceFactory {
     case search(query: String)

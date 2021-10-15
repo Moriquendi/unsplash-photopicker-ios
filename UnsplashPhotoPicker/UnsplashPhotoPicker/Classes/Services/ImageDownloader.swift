@@ -6,7 +6,15 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+import Foundation
+
+#if os(macOS)
+import AppKit
+public typealias NativeImage = NSImage
+#else
 import UIKit
+public typealias NativeImage = UIImage
+#endif
 
 class ImageDownloader {
 
@@ -15,13 +23,13 @@ class ImageDownloader {
 
     private(set) var isCancelled = false
 
-    func downloadPhoto(with url: URL, completion: @escaping ((UIImage?, Bool) -> Void)) {
+    func downloadPhoto(with url: URL, completion: @escaping ((NativeImage?, Bool) -> Void)) {
         guard imageDataTask == nil else { return }
 
         isCancelled = false
 
         if let cachedResponse = cache.cachedResponse(for: URLRequest(url: url)),
-            let image = UIImage(data: cachedResponse.data) {
+            let image = NativeImage(data: cachedResponse.data) {
             completion(image, true)
             return
         }
@@ -30,7 +38,7 @@ class ImageDownloader {
             guard let strongSelf = self else { return }
             strongSelf.imageDataTask = nil
 
-            guard let data = data, let response = response, let image = UIImage(data: data), error == nil else { return }
+            guard let data = data, let response = response, let image = NativeImage(data: data), error == nil else { return }
 
             let cachedResponse = CachedURLResponse(response: response, data: data)
             strongSelf.cache.storeCachedResponse(cachedResponse, for: URLRequest(url: url))

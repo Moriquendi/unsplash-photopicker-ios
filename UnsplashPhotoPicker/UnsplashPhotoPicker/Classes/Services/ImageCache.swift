@@ -6,7 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class ImageCache {
 

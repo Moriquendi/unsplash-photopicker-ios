@@ -5,7 +5,7 @@
 //  Created by Olivier Collet on 2017-07-29.
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
-
+#if !os(macOS)
 import UIKit
 
 protocol WaterfallLayoutDelegate: AnyObject {
@@ -205,3 +205,4 @@ class WaterfallLayout: UICollectionViewLayout {
         return CGSize(width: floor(columnWidth), height: floor(height))
     }
 }
+#endif

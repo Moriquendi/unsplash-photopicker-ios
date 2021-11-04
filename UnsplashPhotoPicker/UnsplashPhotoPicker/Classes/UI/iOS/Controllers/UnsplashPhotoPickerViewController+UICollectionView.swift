@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 // MARK: - UICollectionViewDataSource
@@ -82,3 +83,4 @@ extension UnsplashPhotoPickerViewController: WaterfallLayoutDelegate {
         return CGSize(width: photo.width, height: photo.height)
     }
 }
+#endif

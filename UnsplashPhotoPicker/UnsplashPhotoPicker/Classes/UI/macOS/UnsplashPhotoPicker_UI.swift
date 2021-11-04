@@ -1,5 +1,5 @@
 //
-//  UnsplashPhotoPicker.swift
+//  UnsplashPhotoPicker_UI.swift
 //  
 //
 //  Created by Michał Śmiałko on 15/10/2021.
@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-public struct UnsplashPhotoPicker: View {
+@available(iOS 14.0, *)
+public struct UnsplashPhotoPicker_UI: View {
     
     let configuration: UnsplashPhotoPickerConfiguration
     let onSelect: ([UnsplashPhoto]) -> Void
     let onCancel: () -> Void
     
     @StateObject private var viewModel = UnsplashPhotoPicker_ViewModel()
+    @Environment(\.openURL) private var openURL
     
     public init(configuration: UnsplashPhotoPickerConfiguration,
                 onSelect: @escaping ([UnsplashPhoto]) -> Void,
@@ -36,7 +38,7 @@ public struct UnsplashPhotoPicker: View {
         return LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
             ForEach(itemsAtColumn(idx)) { photo in
                 let ratio = CGFloat(photo.height) / CGFloat(photo.width)
-                PhotoView(photo: photo, onSelect: { onSelect([$0]) })
+                PhotoView_UI(photo: photo, onSelect: { onSelect([$0]) })
                     .frame(width: colWidth, height: colWidth * ratio)
             }
         }
@@ -51,11 +53,9 @@ public struct UnsplashPhotoPicker: View {
                 VStack {
                     TextField("Search photos", text: $viewModel.searchPhrase)
                         .font(Font.system(size: 18).weight(.medium))
-                        .padding([.top, .horizontal])
+                        .padding([.horizontal])
                     
                     ScrollView(.vertical) {
-                        
-                        
                         let colWidth: CGFloat = geometry.size.width / 3 - 10 * 2
                         
                         HStack(alignment: .top) {
@@ -77,22 +77,35 @@ public struct UnsplashPhotoPicker: View {
                             }) {
                                 Text("Load More")
                             }
-                            .buttonStyle(LinkButtonStyle())
                             .padding()
+                            #if os(macOS)
+                            .buttonStyle(LinkButtonStyle())
+                            #endif
                         }
                     }
                 }
             }
         }
-        .toolbar {
-            ToolbarItemGroup {
-                Button(action: { onCancel() }) {
-                    Text("Cancel")
-                }
-                .keyboardShortcut(.cancelAction)
-            }
-        }
-        .frame(width: 500, height: 500, alignment: .top)
+//        .toolbar {
+//            ToolbarItemGroup {
+//                Button(action: { onCancel() }) {
+//                    Text("Cancel")
+//                }
+//                .keyboardShortcut(.cancelAction)
+//            }
+//
+//            ToolbarItemGroup(placement: .confirmationAction) {
+//                Button(action: {
+//                    openURL(URL(string: "https://unsplash.com/?utm_source=pompom&utm_medium=referral")!)
+//                }) {
+//                    Text("Photos by Unsplash")
+//                        .font(Font.system(size: 12).weight(.medium))
+//                }
+//                .buttonStyle(LinkButtonStyle())
+//                .frame(height: 30)
+//            }
+//        }
+//        .frame(width: 500, height: 500, alignment: .top)
     }
 }
 

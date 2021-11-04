@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 enum EmptyViewState {
@@ -136,3 +137,4 @@ private extension EmptyView {
         static let padding: CGFloat = 10.0
     }
 }
+#endif

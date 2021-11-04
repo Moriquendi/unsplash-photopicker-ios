@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 class UnsplashPhotoPickerPreviewViewController: UIViewController {
@@ -48,3 +49,4 @@ class UnsplashPhotoPickerPreviewViewController: UIViewController {
     }
 
 }
+#endif

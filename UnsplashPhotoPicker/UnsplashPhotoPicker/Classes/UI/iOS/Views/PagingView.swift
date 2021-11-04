@@ -6,6 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 class PagingView: UICollectionReusableView {
@@ -57,3 +58,4 @@ class PagingView: UICollectionReusableView {
     }
 
 }
+#endif

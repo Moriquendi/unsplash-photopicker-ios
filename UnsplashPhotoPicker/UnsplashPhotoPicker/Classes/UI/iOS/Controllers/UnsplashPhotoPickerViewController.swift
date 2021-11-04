@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 protocol UnsplashPhotoPickerViewControllerDelegate: AnyObject {
@@ -442,3 +443,4 @@ extension UnsplashPhotoPickerViewController: UIViewControllerPreviewingDelegate 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
     }
 }
+#endif

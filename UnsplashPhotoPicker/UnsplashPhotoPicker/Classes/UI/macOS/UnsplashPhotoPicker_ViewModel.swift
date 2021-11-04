@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
+@available(iOS 13.0, *)
 internal class UnsplashPhotoPicker_ViewModel: NSObject, ObservableObject, PagedDataSourceDelegate {
     
     @Published var searchPhrase = ""
@@ -50,8 +51,10 @@ internal class UnsplashPhotoPicker_ViewModel: NSObject, ObservableObject, PagedD
     }
     
     func dataSource(_ dataSource: PagedDataSource, didFetch items: [UnsplashPhoto]) {
-        isLoading = false
-        self.items.append(contentsOf: items)
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.items.append(contentsOf: items)
+        }
     }
     
     func dataSource(_ dataSource: PagedDataSource, fetchDidFailWithError error: Error) {

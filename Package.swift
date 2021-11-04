@@ -19,7 +19,7 @@ let package = Package(
             path: "UnsplashPhotoPicker/UnsplashPhotoPicker",
             exclude: [
                 "Info.plist", "UnsplashPhotoPicker.h",
-                "Classes/UI/iOS"
+                "Classes/UI/iOS/Views/PhotoView.xib"
             ]
         )
     ]

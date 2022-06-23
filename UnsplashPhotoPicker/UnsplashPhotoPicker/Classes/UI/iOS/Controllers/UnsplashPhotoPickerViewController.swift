@@ -401,3 +401,4 @@ extension UnsplashPhotoPickerViewController: PagedDataSourceDelegate {
         }
     }
 }
+#endif

@@ -51,7 +51,7 @@ public struct UnsplashPhotoPicker_UI: View {
                 Color.white
                 
                 VStack {
-                    TextField("Search photos", text: $viewModel.searchPhrase)
+                    SearchBar(text: $viewModel.searchPhrase, placeholder: "Search Photos")
                         .font(Font.system(size: 18).weight(.medium))
                         .padding([.horizontal])
                     

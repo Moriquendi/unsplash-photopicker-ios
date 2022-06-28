@@ -1,6 +1,6 @@
 //
 //  UnsplashPhotoPicker_UI.swift
-//  
+//
 //
 //  Created by Michał Śmiałko on 15/10/2021.
 //
@@ -9,7 +9,6 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 public struct UnsplashPhotoPicker_UI: View {
-    
     let configuration: UnsplashPhotoPickerConfiguration
     let onSelect: ([UnsplashPhoto]) -> Void
     let onCancel: () -> Void
@@ -19,7 +18,8 @@ public struct UnsplashPhotoPicker_UI: View {
     
     public init(configuration: UnsplashPhotoPickerConfiguration,
                 onSelect: @escaping ([UnsplashPhoto]) -> Void,
-                onCancel: @escaping () -> Void) {
+                onCancel: @escaping () -> Void)
+    {
         self.configuration = configuration
         self.onSelect = onSelect
         self.onCancel = onCancel
@@ -48,7 +48,7 @@ public struct UnsplashPhotoPicker_UI: View {
     public var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.white
+                Color.systemBackground
                 
                 VStack {
                     SearchBar(text: $viewModel.searchPhrase, placeholder: "Search Photos")
@@ -79,7 +79,7 @@ public struct UnsplashPhotoPicker_UI: View {
                             }
                             .padding()
                             #if os(macOS)
-                            .buttonStyle(LinkButtonStyle())
+                                .buttonStyle(LinkButtonStyle())
                             #endif
                         }
                     }
@@ -109,8 +109,18 @@ public struct UnsplashPhotoPicker_UI: View {
     }
 }
 
-//struct SwiftUIView_Previews: PreviewProvider {
+// struct SwiftUIView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SwiftUIView()
 //    }
-//}
+// }
+
+extension Color {
+    static var systemBackground: Color {
+        #if os(macOS)
+        Color(NSColor.textBackgroundColor)
+        #else
+        Color(UIColor.systemBackground)
+        #endif
+    }
+}

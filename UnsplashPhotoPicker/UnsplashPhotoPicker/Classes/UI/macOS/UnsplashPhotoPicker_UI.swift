@@ -115,6 +115,7 @@ public struct UnsplashPhotoPicker_UI: View {
 //    }
 // }
 
+@available(iOS 13.0, *)
 extension Color {
     static var systemBackground: Color {
         #if os(macOS)

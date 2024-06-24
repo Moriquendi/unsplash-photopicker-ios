@@ -7,8 +7,11 @@
 //
 
 import Foundation
+#if os(macOS)
+#else
 import MobileCoreServices
 import UIKit
+#endif
 
 let kUTTypeUnsplashPhoto = "com.unsplash.photo"
 

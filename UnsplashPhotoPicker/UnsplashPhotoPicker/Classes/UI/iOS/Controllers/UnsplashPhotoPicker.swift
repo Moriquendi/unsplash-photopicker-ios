@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 /// A protocol describing an object that can be notified of events from UnsplashPhotoPicker.
@@ -91,3 +92,4 @@ extension UnsplashPhotoPicker: UnsplashPhotoPickerViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
 }
+#endif

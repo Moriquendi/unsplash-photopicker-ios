@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 protocol UnsplashPhotoPickerViewControllerDelegate: AnyObject {
@@ -255,10 +256,10 @@ class UnsplashPhotoPickerViewController: UIViewController {
 
     // MARK: - Data
 
-    private func setSearchText(_ text: String?) {
-        if let text = text, text.isEmpty == false {
-            dataSource = PhotosDataSourceFactory.search(query: text).dataSource
-            searchText = text
+    private func setSearchText(_ symbol: String?) {
+        if let symbol = symbol, symbol.isEmpty == false {
+            dataSource = PhotosDataSourceFactory.search(query: symbol).dataSource
+            searchText = symbol
         } else {
             dataSource = editorialDataSource
             searchText = nil
@@ -319,9 +320,9 @@ class UnsplashPhotoPickerViewController: UIViewController {
 // MARK: - UISearchBarDelegate
 extension UnsplashPhotoPickerViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
+        guard let symbol = searchBar.text else { return }
 
-        setSearchText(text)
+        setSearchText(symbol)
         refresh()
         scrollToTop()
         hideEmptyView()
@@ -400,3 +401,4 @@ extension UnsplashPhotoPickerViewController: PagedDataSourceDelegate {
         }
     }
 }
+#endif

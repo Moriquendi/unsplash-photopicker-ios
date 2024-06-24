@@ -6,23 +6,33 @@
 //  Copyright © 2019 Unsplash. All rights reserved.
 //
 
-import UIKit
-
 struct PhotoPickerColors {
-    var background: UIColor {
+    var background: NativeColor {
+#if os(macOS)
+        return .white
+#else
         if #available(iOS 13.0, *) { return .systemBackground }
         return .white
+#endif
     }
-    var titleLabel: UIColor {
+    var titleLabel: NativeColor {
+#if os(macOS)
+        return .labelColor
+#else
         if #available(iOS 13.0, *) { return .label }
         return .black
+#endif
     }
-    var subtitleLabel: UIColor {
+    var subtitleLabel: NativeColor {
+#if os(macOS)
+        return .secondaryLabelColor
+#else
         if #available(iOS 13.0, *) { return .secondaryLabel }
         return .gray
+#endif
     }
 }
 
-extension UIColor {
+extension NativeColor {
     static let photoPicker = PhotoPickerColors()
 }

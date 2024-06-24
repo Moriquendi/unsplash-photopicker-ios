@@ -6,6 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 class PhotoCell: UICollectionViewCell {
@@ -90,3 +91,4 @@ class PhotoCell: UICollectionViewCell {
             ])
     }
 }
+#endif

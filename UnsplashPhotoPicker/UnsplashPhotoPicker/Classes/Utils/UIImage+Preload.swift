@@ -5,6 +5,7 @@
 //  Created by Hendrik Kueck on 2020-09-28.
 //
 
+#if os(iOS)
 import UIKit
 
 extension UIImage {
@@ -30,3 +31,4 @@ extension UIImage {
     }
 
 }
+#endif

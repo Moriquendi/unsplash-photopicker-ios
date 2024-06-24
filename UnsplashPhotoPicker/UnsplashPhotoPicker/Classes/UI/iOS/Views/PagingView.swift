@@ -6,6 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 class PagingView: UICollectionReusableView {
@@ -16,7 +17,7 @@ class PagingView: UICollectionReusableView {
     static var reuseIdentifier = "PagingView"
 
     private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .gray)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
@@ -57,3 +58,4 @@ class PagingView: UICollectionReusableView {
     }
 
 }
+#endif

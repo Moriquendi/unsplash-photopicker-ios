@@ -6,6 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 class PhotoView: UIView {
@@ -103,3 +104,4 @@ class PhotoView: UIView {
     }
 
 }
+#endif

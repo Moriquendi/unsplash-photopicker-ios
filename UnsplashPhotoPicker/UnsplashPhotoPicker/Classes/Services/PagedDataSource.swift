@@ -6,7 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol PagedDataSourceFactory {
     func initialCursor() -> UnsplashPagedRequest.Cursor

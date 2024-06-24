@@ -6,6 +6,7 @@
 //  Copyright © 2017 FeedMe. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 class GradientView: UIView {
@@ -36,3 +37,4 @@ class GradientView: UIView {
     }
 
 }
+#endif

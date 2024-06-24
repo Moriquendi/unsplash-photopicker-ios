@@ -6,13 +6,17 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+import Foundation
+#if !os(macOS)
 import UIKit
+#endif
 
 extension UnsplashPhoto {
     var itemProvider: NSItemProvider {
         return NSItemProvider(object: UnsplashPhotoItemProvider(with: self))
     }
 
+    #if !os(macOS)
     var dragItem: UIDragItem {
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = self
@@ -34,4 +38,5 @@ extension UnsplashPhoto {
         }
         return dragItem
     }
+    #endif
 }

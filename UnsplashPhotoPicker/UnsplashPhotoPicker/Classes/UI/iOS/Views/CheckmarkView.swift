@@ -6,6 +6,7 @@
 //  Copyright © 2018 Unsplash. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 
 class CheckmarkView: UIView {
@@ -65,3 +66,4 @@ class CheckmarkView: UIView {
     }
 
 }
+#endif
